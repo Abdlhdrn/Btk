@@ -10,6 +10,7 @@ const KullaniciSchema = new mongoose.model({
     şehir : {type : string},
     dili : {type : string}
 });
-const Kitap = mongoose.model("Kitap",KitapSchema);
+const Kullanici = mongoose.model("Kullanici",KullaniciSchema);
 
-module.exports = Kitap;
+module.exports = Kullanici;
+
