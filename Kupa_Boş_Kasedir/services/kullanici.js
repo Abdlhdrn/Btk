@@ -12,20 +12,20 @@ const getByIdKullanici = async (id) => {
 
 const updateKullaniciById = async (req) => {
     const { id } = req.params;  // `id`'yi `req.params`'den alıyoruz
-    const { adi,soyadi,tc,dogum_tarihi,aktiflik,şehir,bakiye } = req.body;
+    const { adi,soyadi,tc,dogum_tarihi,aktiflik,sehir,bakiye } = req.body;
 
     const updatedKullanici = await Kullanici.findByIdAndUpdate(id, {
-        adi,soyadi,tc,dogum_tarihi,aktiflik,şehir,bakiye
+        adi,soyadi,tc,dogum_tarihi,aktiflik,sehir,bakiye
     }, { new: true });
 
     return updatedKullanici; // Güncellenmiş Kullanici döndürülüyor
 };
 
 const createNewKullanici = async (req) => {
-    const { adi,soyadi,tc,dogum_tarihi,aktiflik,şehir,bakiye } = req.body;
+    const { adi,soyadi,tc,dogum_tarihi,aktiflik,sehir,bakiye } = req.body;
 
     const yeniKullanici = await Kullanici.create({
-        adi,soyadi,tc,dogum_tarihi,aktiflik,şehir,bakiye
+        adi,soyadi,tc,dogum_tarihi,aktiflik,sehir,bakiye
     });
 
     return yeniKullanici; // Yeni oluşturulan Kullanici döndürülüyor

@@ -20,7 +20,7 @@ app.use(express.json());
 
 // Kitap rotalarını kullan
 app.use("/kitap", kitapRoute);
-app.use("kullanici",kullaniciRoute);
+app.use("/kullanici",kullaniciRoute);
 
 
 
