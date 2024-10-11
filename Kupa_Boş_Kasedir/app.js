@@ -12,12 +12,16 @@ const MONGO_URI = process.env.DB_HOST ;  // Yerel MongoDB için varsayılan URI
 
 // Kitap router'ı dahil et
 const kitapRoute = require('./routes/kitap');
+const kullaniciRoute = require('./routes/kullanici');
+
 
 // JSON verilerini parse etmek için middleware
 app.use(express.json());
 
 // Kitap rotalarını kullan
 app.use("/kitap", kitapRoute);
+app.use("kullanici",kullaniciRoute);
+
 
 
 

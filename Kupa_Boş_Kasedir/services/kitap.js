@@ -11,11 +11,11 @@ const getByIdKitap = async (id) => {
 };
 
 const updateKitapById = async (id, body) => {
-    const { adi, yazari, turu, baski, sayfa_sayisi, fiyati, stok_durumu, dili } = body;
+    const { adi, yazari, turu, baski, sayfa_sayisi, fiyati, stok_durumu, bakiye } = body;
 
     const updatedKitap = await Kitap.findByIdAndUpdate(id, 
         {
-        adi, yazari, turu, baski, sayfa_sayisi, fiyati, stok_durumu, dili
+        adi, yazari, turu, baski, sayfa_sayisi, fiyati, stok_durumu, bakiye
     }, { new: true });
 
     return updatedKitap; // Güncellenmiş kitap döndürülüyor
