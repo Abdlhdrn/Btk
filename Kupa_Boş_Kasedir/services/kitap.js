@@ -1,9 +1,8 @@
 const Kitap = require("../models/kitap");
 
-
 const getAllKitap = async () => {
-    const Kitapler = await Kitap.find();
-    return Kitapler;
+    const kitaplar = await Kitap.find();
+    return kitaplar;
 };
 
 const getByIdKitap = async (id) => {
@@ -12,31 +11,31 @@ const getByIdKitap = async (id) => {
 };
 
 const updateKitapById = async (req) => {
-    const { id } = req.params;
+    const { id } = req.params;  // `id`'yi `req.params`'den alıyoruz
     const { adi, yazari, turu, baski, sayfa_sayisi, fiyati, stok_durumu, dili } = req.body;
 
     const updatedKitap = await Kitap.findByIdAndUpdate(id, {
         adi, yazari, turu, baski, sayfa_sayisi, fiyati, stok_durumu, dili
     }, { new: true });
 
-    return updatedKitap; // body yerine güncellenen kitap döndürülüyor
+    return updatedKitap; // Güncellenmiş kitap döndürülüyor
 };
 
 const createNewKitap = async (req) => {
     const { adi, yazari, turu, baski, sayfa_sayisi, fiyati, stok_durumu, dili } = req.body;
-    
+
     const yeniKitap = await Kitap.create({
         adi, yazari, turu, baski, sayfa_sayisi, fiyati, stok_durumu, dili
     });
 
-    return yeniKitap; // Kitap oluşturulunca geri dönüldü
+    return yeniKitap; // Yeni oluşturulan kitap döndürülüyor
 };
 
 const deleteKitapById = async (req) => {
-    const { id } = req.params;
+    const { id } = req.params;  // `id`'yi `req.params`'den alıyoruz
     const silinenKitap = await Kitap.findByIdAndDelete(id);
 
-    return silinenKitap; // Silinen kitap geri döndürüldü
+    return silinenKitap; // Silinen kitap geri döndürülüyor
 };
 
 module.exports = {
