@@ -8,7 +8,8 @@ const KullaniciSchema = new mongoose.Schema({
     dogum_tarihi: { type: Date },
     aktiflik: { type: Boolean, default: true },  // Varsayılan olarak aktif olsun
     sehir: { type: String },
-    dili: { type: String }
+    bakiye: { type: Number },
+
 });
 
 // Kullanıcı modelini oluşturuyoruz

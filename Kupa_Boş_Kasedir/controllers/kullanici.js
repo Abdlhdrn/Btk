@@ -1,4 +1,4 @@
-const { getAllKullanici, getByIdKullanici, updateKullaniciById, createNewKullanici, deleteKullaniciById } = require("../services/kul");
+const { getAllKullanici, getByIdKullanici, updateKullaniciById, createNewKullanici, deleteKullaniciById } = require("../services/kullanici");
 
 const fetchAllKullanici = async (req, res, next) => {
     try {
@@ -14,7 +14,7 @@ const fetchKullaniciById = async (req, res, next) => {
         const { id } = req.params;  // `id` parametresi alınır
         const Kullanici = await getByIdKullanici(id);
         if (!Kullanici) {
-            return res.status(404).json({ message: "Kullanici bulunamadı" });
+            return res.status(404).json({ message: "Kullanici bulunamadi" });
         }
         return res.status(200).json(Kullanici);
     } catch (error) {
@@ -27,7 +27,7 @@ const updateKullanici = async (req, res, next) => {
         const { id } = req.params;  // `id` parametresi alınır
         const guncelKullanici = await updateKullaniciById(req);  // `req` parametresini gönder
         if (!guncelKullanici) {
-            return res.status(404).json({ message: "Kullanici bulunamadı" });
+            return res.status(404).json({ message: "Kullanici bulunamadi" });
         }
         return res.status(200).json(guncelKullanici);
     } catch (error) {
@@ -51,10 +51,10 @@ const deleteKullanici = async (req, res, next) => {
         const silinenKullanici = await deleteKullaniciById(req); // Kullanici servisini çağırıyoruz
         
         if (!silinenKullanici) {
-            return res.status(404).json({ message: "Kullanici bulunamadı" }); // Kullanici bulunamazsa 404
+            return res.status(404).json({ message: "Kullanici bulunamadi" }); // Kullanici bulunamazsa 404
         }
 
-        return res.status(200).json({ message: "Kullanici başarıyla silindi", Kullanici: silinenKullanici }); // Başarıyla silindiğinde 200
+        return res.status(200).json({ message: "Kullanici başariyla silindi", Kullanici: silinenKullanici }); // Başarıyla silindiğinde 200
     } catch (error) {
         return res.status(500).json({ error: error.message }); // Hata durumunda 500
     }

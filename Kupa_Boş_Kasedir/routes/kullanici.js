@@ -5,7 +5,7 @@ const router = express.Router();
 const Kullanici = require('../models/kullanici');
 
 
-const {fetchAllKullanici,createKullanici,fetchKullaniciById,deleteKullanici,updateKullanici} = require('../controllers/Kullanici');
+const {fetchAllKullanici,createKullanici,fetchKullaniciById,deleteKullanici,updateKullanici} = require('../controllers/kullanici');
 
 router.route('/').post(createKullanici);
 

@@ -38,6 +38,9 @@ const deleteKullaniciById = async (req) => {
     return silinenKullanici; // Silinen Kullanici geri döndürülüyor
 };
 
+
+
+
 module.exports = {
     getByIdKullanici,
     getAllKullanici,
