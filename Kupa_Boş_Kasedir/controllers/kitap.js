@@ -35,14 +35,24 @@ const updateKitap = async (req, res, next) => {
     }
 };
 
-const createKitap = async (req, res, next) => {
+
+
+const createKitap = async (req, res) => {
     try {
-        const yeniKitap = await createNewKitap(req);  // `req` parametresini gönder
+        // req.body'den verileri al
+        const kitapData = req.body;
+
+        // Service'i çağır ve kitap oluştur
+        const yeniKitap = await createNewKitap(kitapData);
+
+        // Başarı durumunda, 201 ile yanıt ver
         return res.status(201).json(yeniKitap);
     } catch (error) {
+        // Hata durumunda, 500 ile yanıt ver
         return res.status(500).json({ error: error.message });
     }
 };
+
 
 
 
