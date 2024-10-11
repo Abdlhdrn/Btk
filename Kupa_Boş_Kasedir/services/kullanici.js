@@ -38,9 +38,6 @@ const deleteKullaniciById = async (req) => {
     return silinenKullanici; // Silinen Kullanici geri döndürülüyor
 };
 
-
-
-
 module.exports = {
     getByIdKullanici,
     getAllKullanici,
@@ -48,3 +45,14 @@ module.exports = {
     createNewKullanici,
     deleteKullaniciById
 };
+
+const kitapSatinAl = async (req,res,next)=> {
+    if (kullanici.bakiye >= fiyati) {
+      kullanici.bakiye -= fiyati;  
+      console.log(`Kitap satın alındı Kalan bakiye: ${kullanici.bakiye} TL`);
+    } 
+    else {
+      console.log('Yetersiz bakiye');
+    }
+  } 
+  
