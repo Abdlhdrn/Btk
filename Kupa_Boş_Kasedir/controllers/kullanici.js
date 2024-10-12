@@ -60,6 +60,9 @@ const deleteKullanici = async (req, res, next) => {
     }
 };
 
+
+
+
 module.exports = {
     fetchAllKullanici,
     updateKullanici,

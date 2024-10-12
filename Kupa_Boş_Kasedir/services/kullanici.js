@@ -46,13 +46,3 @@ module.exports = {
     deleteKullaniciById
 };
 
-const kitapSatinAl = async (req,res,next)=> {
-    if (kullanici.bakiye >= fiyati) {
-      kullanici.bakiye -= fiyati;  
-      console.log(`Kitap satın alındı Kalan bakiye: ${kullanici.bakiye} TL`);
-    } 
-    else {
-      console.log('Yetersiz bakiye');
-    }
-  } 
-  
