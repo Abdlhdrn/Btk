@@ -1,4 +1,5 @@
 const { getAllKullanici, getByIdKullanici, updateKullaniciById, createNewKullanici, deleteKullaniciById } = require("../services/kullanici");
+const validateKullanici  = require("../validation/kullanici");
 
 const fetchAllKullanici = async (req, res, next) => {
     try {
@@ -23,6 +24,8 @@ const fetchKullaniciById = async (req, res, next) => {
 };
 
 const updateKullanici = async (req, res, next) => {
+    const { error } = validateKullanici(req.body);
+    if (error) return res.status(400).json({ message: error.details[0].message }); 
     try {
          // `id` parametresi alınır
         const guncelKullanici = await updateKullaniciById(req);  // `req` parametresini gönder
@@ -36,6 +39,9 @@ const updateKullanici = async (req, res, next) => {
 };
 
 const createKullanici = async (req, res, next) => {
+    
+    const { error } = validateKullanici(req.body);
+    if (error) return res.status(400).json({ message: error.details[0].message });
     try {
         const yeniKullanici = await createNewKullanici(req);  // `req` parametresini gönder
         return res.status(201).json(yeniKullanici);

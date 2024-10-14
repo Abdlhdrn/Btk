@@ -1,5 +1,7 @@
 const { getAllKitap, getByIdKitap, updateKitapById, createNewKitap, deleteKitapById } = require("../services/kitap");
 
+const validateKitap = require("../validation/kitap");
+
 const fetchAllKitap = async (req, res, next) => {
     try {
         const kitaplar = await getAllKitap();
@@ -23,6 +25,9 @@ const fetchKitapById = async (req, res, next) => {
 };
 
 const updateKitap = async (req, res, next) => {
+    const { error } = validateKitap(req.body);
+    if (error) return res.status(400).json({ message: error.details[0].message });
+    
     try {
         const { id } = req.params;  // `id` parametresi alınır
         const guncelKitap = await updateKitapById(req);  // `req` parametresini gönder
@@ -38,6 +43,9 @@ const updateKitap = async (req, res, next) => {
 
 
 const createKitap = async (req, res) => {
+    const { error } = validateKitap(req.body);
+    if (error) return res.status(400).json({ message: error.details[0].message });
+    
     try {
         // req.body'den verileri al
         const kitapData = req.body;
