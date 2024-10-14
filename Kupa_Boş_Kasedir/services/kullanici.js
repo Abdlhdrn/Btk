@@ -1,12 +1,13 @@
 const Kullanici = require("../models/kullanici");
 
 const getAllKullanici = async () => {
+    
     const Kullanicilar = await Kullanici.find();
     return Kullanicilar;
 };
 
 const getByIdKullanici = async (id) => {
-    const Kullanici = await Kullanici.findById(id);
+    const kullanici = await Kullanici.findById(id);
     return Kullanici;
 };
 

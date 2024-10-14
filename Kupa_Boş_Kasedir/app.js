@@ -5,6 +5,7 @@ const path = require('path');
 
 // Uygulamayı oluştur
 const app = express();
+app.use(express.json());
 
 // Ortam değişkenlerinden PORT ve DB_HOST değerlerini al
 const PORT = process.env.PORT  // PORT tanımlı değilse varsayılan 1453 kullanılacak
@@ -17,7 +18,7 @@ const functionsRoute = require('./routes/functions')
 
 
 // JSON verilerini parse etmek için middleware
-app.use(express.json());
+
 
 // Kitap rotalarını kullan
 app.use("/kitap", kitapRoute);

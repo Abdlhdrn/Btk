@@ -1,8 +1,9 @@
 const { getByIdKullanici, updateKullaniciById } = require("../services/kullanici");
 const { getByIdKitap } = require("../services/kitap");
+const Kullanici = require("../models/kullanici");  // Sadece bir tane kullan
 
-const newKitapSatinAl = async (req, res, next) => {
-    const { KullaniciId, KitapId, miktar } = req.body;
+const newKitapSatinAl = async (req, res) => {
+    const { kullaniciId, kitapId, miktar } = req.body;
 
     try {
         // Miktarın tamsayıya çevrilmesi
@@ -10,15 +11,15 @@ const newKitapSatinAl = async (req, res, next) => {
         if (isNaN(miktarInt) || miktarInt <= 0) {
             return res.status(400).json({ message: "Miktar geçerli ve pozitif bir sayı olmalıdır." });
         }
-
+        
         // Kullanıcıyı veritabanından çek
-        const kullanici = await getByIdKullanici(KullaniciId);
+        const kullanici = await getByIdKullanici(kullaniciId);
         if (!kullanici) {
             return res.status(404).json({ message: "Kullanıcı bulunamadı." });
         }
-
+        
         // Kitabı veritabanından çek
-        const kitap = await getByIdKitap(KitapId);
+        const kitap = await getByIdKitap(kitapId);
         if (!kitap) {
             return res.status(404).json({ message: "Kitap bulunamadı." });
         }
@@ -30,7 +31,7 @@ const newKitapSatinAl = async (req, res, next) => {
         if (kullanici.bakiye >= sepetTutari) {
             // Bakiye düşür ve kaydet
             kullanici.bakiye -= sepetTutari;
-            await updateKullaniciById(KullaniciId, { bakiye: kullanici.bakiye });
+            await updateKullaniciById(kullaniciId, { bakiye: kullanici.bakiye });
 
             // Satın alma başarılı yanıtı gönder
             return res.status(200).json({
