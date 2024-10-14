@@ -5,6 +5,12 @@ const newKitapSatinAl = async (req, res, next) => {
     const { KullaniciId, KitapId, miktar } = req.body;
 
     try {
+        // Miktarın tamsayıya çevrilmesi
+        const miktarInt = parseInt(miktar, 10);
+        if (isNaN(miktarInt) || miktarInt <= 0) {
+            return res.status(400).json({ message: "Miktar geçerli ve pozitif bir sayı olmalıdır." });
+        }
+
         // Kullanıcıyı veritabanından çek
         const kullanici = await getByIdKullanici(KullaniciId);
         if (!kullanici) {
@@ -18,7 +24,7 @@ const newKitapSatinAl = async (req, res, next) => {
         }
 
         // Sepet tutarını hesapla
-        const sepetTutari = kitap.fiyati * miktar;
+        const sepetTutari = kitap.fiyati * miktarInt;
 
         // Yetersiz bakiye kontrolü
         if (kullanici.bakiye >= sepetTutari) {

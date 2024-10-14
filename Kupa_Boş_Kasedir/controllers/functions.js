@@ -2,9 +2,9 @@ const { newKitapSatinAl } = require('../services/functions');
 
 const satinAl = async (req, res, next) => {
     try {
-        // Route parametrelerinden KullaniciId ve KitapId'yi alıyoruz
-        const { KullaniciId, KitapId } = req.params;
-        const { miktar } = req.body; // `miktar` hala `req.body`'den gelecek
+        
+        const { KullaniciId, KitapId,miktar } = req.body;
+        // `miktar` hala `req.body`'den gelecek
 
         // Satın alma işlemi için ilgili fonksiyona parametreleri geçiyoruz
         const sonuc = await newKitapSatinAl(KullaniciId, KitapId, miktar);

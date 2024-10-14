@@ -1,9 +1,14 @@
 const express = require("express");
 const router = express.Router();
 
+const Kullanici = require('../models/kullanici');
+
+const Kitap = require('../models/kitap');
+
+
 const { satinAl } = require('../controllers/functions');
 
 // Route parametrelerini `/` ile ayırarak doğru bir şekilde tanımladık
-router.route('/satin-al/:KullaniciId/:KitapId').put(satinAl);
+router.route('/satin-al').put(satinAl);
 
 module.exports = router;
