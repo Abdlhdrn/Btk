@@ -8,18 +8,17 @@ const getAllKullanici = async () => {
 
 const getByIdKullanici = async (id) => {
     const kullanici = await Kullanici.findById(id);
-    return Kullanici;
+    return kullanici;
 };
 
-const updateKullaniciById = async (req) => {
-    const { id } = req.params;  // `id`'yi `req.params`'den alıyoruz
-    const { adi,soyadi,tc,dogum_tarihi,aktiflik,sehir,bakiye } = req.body;
+const updateKullaniciById = async (id, body) => {
+    const { adi,soyadi,tc,dogum_tarihi,aktiflik,sehir,bakiye } = body;  // Bakiye ve diğer parametreler body'den alınır
 
     const updatedKullanici = await Kullanici.findByIdAndUpdate(id, {
         adi,soyadi,tc,dogum_tarihi,aktiflik,sehir,bakiye
     }, { new: true });
 
-    return updatedKullanici; // Güncellenmiş Kullanici döndürülüyor
+    return updatedKullanici;  // Güncellenmiş Kullanıcı döndürülür
 };
 
 const createNewKullanici = async (req) => {

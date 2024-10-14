@@ -24,7 +24,7 @@ const fetchKullaniciById = async (req, res, next) => {
 
 const updateKullanici = async (req, res, next) => {
     try {
-        const { id } = req.params;  // `id` parametresi alınır
+         // `id` parametresi alınır
         const guncelKullanici = await updateKullaniciById(req);  // `req` parametresini gönder
         if (!guncelKullanici) {
             return res.status(404).json({ message: "Kullanici bulunamadi" });

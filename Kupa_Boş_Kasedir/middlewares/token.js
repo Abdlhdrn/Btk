@@ -23,7 +23,3 @@ app.get('/protected', authenticateToken, (req, res) => {
     res.json({ message: 'Bu korunan bir alan.', user: req.user });
 });
 
-// Sunucuyu başlat
-app.listen(3000, () => {
-    console.log('Sunucu 9595 portunda çalışıyor...');
-});
