@@ -2,6 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
+const authRoutes = require('./routes/auth');
 
 // Uygulamayı oluştur
 const app = express();
@@ -24,6 +25,8 @@ const functionsRoute = require('./routes/functions')
 app.use("/kitap", kitapRoute);
 app.use("/kullanici",kullaniciRoute);
 app.use("/function",functionsRoute);
+app.use('/api/auth', authRoutes);
+
 app.use(express.static(path.join(__dirname, 'front-end')));
 
 
@@ -31,6 +34,8 @@ app.use(express.static(path.join(__dirname, 'front-end')));
 
 // MongoDB bağlantısını kur
 mongoose.connect(MONGO_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
     
 }).then(() => {
     console.log("Connected to MongoDB");

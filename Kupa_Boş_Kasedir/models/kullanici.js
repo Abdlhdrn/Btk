@@ -9,6 +9,8 @@ const KullaniciSchema = new mongoose.Schema({
     aktiflik: { type: Boolean, default: true },  // Varsayılan olarak aktif olsun
     sehir: { type: String },
     bakiye: { type: Number },
+    kullaniciAdi: {type: String},
+    sifre: {type: String},
 
 });
 

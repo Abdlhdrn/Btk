@@ -9,7 +9,9 @@ const kullaniciSchema = Joi.object({
     dogum_tarihi: Joi.date().optional(),  // Opsiyonel olabilir
     aktiflik: Joi.boolean().optional().default(true),  // Varsayılan olarak aktiflik true
     sehir: Joi.string().min(2).max(50).optional(),
-    bakiye: Joi.number().min(0).optional()  // Bakiye en az 0 olabilir
+    bakiye: Joi.number().min(0).optional(), // Bakiye en az 0 olabilir
+    kullaniciAdi: Joi.string().min(2).max(30).optional(),
+    sifre: Joi.string().min(1).max(30).optional()
 });
 
 // Doğrulama fonksiyonu
