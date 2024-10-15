@@ -27,6 +27,7 @@ app.use("/kullanici",kullaniciRoute);
 app.use("/function",functionsRoute);
 app.use('/api/auth', authRoutes);
 
+app.use(express.static(path.join(__dirname, 'front-end')));
 
 
 
