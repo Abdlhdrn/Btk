@@ -24,7 +24,7 @@ const functionsRoute = require('./routes/functions')
 app.use("/kitap", kitapRoute);
 app.use("/kullanici",kullaniciRoute);
 app.use("/function",functionsRoute);
-
+app.use(express.static(path.join(__dirname, 'front-end')));
 
 
 

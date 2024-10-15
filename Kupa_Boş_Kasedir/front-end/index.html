@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kitap ve Kullanıcı Yönetimi</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Kitap ve Kullanıcı Yönetim Sistemi</h1>
+
+    <!-- Kitapları Listeleme -->
+    <section>
+        <h2>Kitaplar</h2>
+        <button onclick="fetchAllKitap()">Kitapları Getir</button>
+        <ul id="kitap-list"></ul>
+    </section>
+
+    <!-- Yeni Kitap Ekleme -->
+    <section>
+        <h2>Yeni Kitap Ekle</h2>
+        <form id="kitap-form">
+            <label>Adı: <input type="text" id="kitap-adi" required></label>
+            <label>Yazarı: <input type="text" id="kitap-yazari" required></label>
+            <label>Fiyat: <input type="number" id="kitap-fiyati" required></label>
+            <button type="submit">Kitap Ekle</button>
+        </form>
+    </section>
+
+    <!-- Kullanıcı Listeleme -->
+    <section>
+        <h2>Kullanıcılar</h2>
+        <button onclick="fetchAllKullanici()">Kullanıcıları Getir</button>
+        <ul id="kullanici-list"></ul>
+    </section>
+
+    <!-- Kitap Satın Alma -->
+    <section>
+        <h2>Kitap Satın Al</h2>
+        <form id="satin-al-form">
+            <label>Kullanıcı ID: <input type="text" id="kullanici-id" required></label>
+            <label>Kitap ID: <input type="text" id="kitap-id" required></label>
+            <label>Miktar: <input type="number" id="miktar" required></label>
+            <button type="submit">Satın Al</button>
+        </form>
+    </section>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
